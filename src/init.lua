@@ -12,8 +12,12 @@ end
 
 function BetterSignal:Fire(...)
   for _, connection in self.Connections do
-    connection.Function(...)
-  end
+      if connection.Function then
+        connection.Function(...)
+      else
+        table.remove(self.Connections, table.find(self.Connections, connection))
+      end
+   end
 end
 
 function BetterSignal:Connect(...)

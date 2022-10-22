@@ -10,6 +10,9 @@ end
 
 function BetterSignalConnection:Disconnect()
   setmetatable(self, nil)
+  for property, _ in self do
+    self[property] = nil
+  end
   self = nil
 end
 
