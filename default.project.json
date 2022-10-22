@@ -1,0 +1,11 @@
+{
+  "name": "BetterSignal",
+  "tree": {
+    "$className": "DataModel",
+    "ReplicatedStorage": {
+      "BetterSignal": {
+        "$path": "src"
+      }
+    }
+  }
+}
