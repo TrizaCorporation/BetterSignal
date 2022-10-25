@@ -27,14 +27,13 @@ function BetterSignal:Connect(...)
 end
 
 function BetterSignal:Wait()
-  local fired = nil
-  local Connection = self:Connect(function()
-    fired = true
+  local WaitingCoroutine = coroutine.running()
+  local Connection
+  Connection = self:Connect(function()
+    Connection:Disconnect()
+    task.spawn(WaitingCoroutine)
   end)
-  repeat
-    task.wait()
-  until fired
-  Connection:Disconnect()
+  return coroutine.yield()
 end
 
 return BetterSignal
